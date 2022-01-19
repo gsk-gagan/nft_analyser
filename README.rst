@@ -4,7 +4,7 @@ NFT Analyser
 
 
 .. image:: https://img.shields.io/pypi/v/nft_analyser.svg
-        :target: https://pypi.python.org/pypi/nft_analyser
+        :target: https://test.pypi.org/project/nft-analyser/
 
 .. image:: https://img.shields.io/travis/gsk-gagan/nft_analyser.svg
         :target: https://travis-ci.com/gsk-gagan/nft_analyser
@@ -17,7 +17,7 @@ NFT Analyser
 
 
 * Free software: MIT license
-* Documentation: https://nft-analyser.readthedocs.io.
+* Documentation: https://nft-analyser.readthedocs.io/.
 
 
 Features
