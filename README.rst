@@ -69,7 +69,7 @@ Vectorizing NFT Names
 * We semantically vectorized our NFT names by using pre-trained GLOVE model as the vocabulary of names available wouldn't have been sufficient to identify any semantic relationship.
 * By vectorizing we get both a numerical representation of the data, as well as a semantic relationship between different words.
 
-.. figure:: /_static/clean.png
+.. figure:: https://github.com/gsk-gagan/nft_analyser/blob/master/docs/_static/clean.png?raw=true
     :align: center
     :height: 500px
     :alt: Vectorization Pipeline
@@ -84,7 +84,7 @@ Linking NFT Names to Market Value
 * We tried both GridSearchCV and RandomizedSearchCV to identify the optimal set of parameters for our deep neural network. The mean absolute error is about $700 for NFTs ranging between 10cents and $10,000. We believe having more data should help in alleviating this difference. Do note again that this is the out-of-sample error.
 * From an alternative perspective, instead of focusing on the out-of-sample performance, we can reduce the limited data issue by training the model on the full data. The use case of such model will be to suggest which of the existing similar names will be best suited for creating a new NFT. 
 
-.. figure:: /_static/model.png
+.. figure:: https://github.com/gsk-gagan/nft_analyser/blob/master/docs/_static/model.png?raw=true
     :align: center
     :height: 500px
     :alt: Deep Neural Network
