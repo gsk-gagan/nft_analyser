@@ -1,0 +1,6 @@
+{
+    "nft_sql": "/Users/gskgagan/Documents/workspace/nft/data/nfts.sqlite",
+    "nft_sql_source": "https://www.kaggle.com/simiotic/ethereum-nfts",
+    "glove_root": "/Users/gskgagan/Documents/workspace/nft/data/glove",
+    "glove_root_source": "https://nlp.stanford.edu/data/glove.6B.zip"
+}

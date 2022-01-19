@@ -1,0 +1,11 @@
+digraph {
+	node [color=lightgoldenrod1 shape=rect style=filled]
+	onlyFirstCapital -> camelToWords
+	selectColumns -> onlyFirstCapital
+	camelToWords -> cleanText
+	cleanText -> tokenize
+	tokenize -> removeStopWords
+	removeStopWords -> lemmatize
+	lemmatize -> explodeList
+	explodeList -> gloveFeatures
+}
