@@ -1,4 +1,6 @@
 import time
+import json
+from importlib import resources
 from typing import Sequence, Union, Optional, Any
 
 import pandas as pd
@@ -122,6 +124,10 @@ class CompareName:
 # all_results = {}
 
 if __name__ == '__main__':
+    with resources.open_text('data', "config.json") as f:
+        config = json.load(f)
+        helper.set_config(config)
+    
     default_params = {
         'glove_features': 300,
         'nft_value_range': [0.1, 1e4],      # 10c to $10k
@@ -199,7 +205,7 @@ if __name__ == '__main__':
     
     # Comparison of new words
     compare = CompareName(vec_pp, model, glove_df, default_params['include_nft_age'])
-    words = ['Apple', 'Mango', 'Banana', 'Maid', 'Latina', 'Kittens', 'Doge', 'Shiba', 'Ape']
+    words = ['Apple', 'Mango', 'Banana', 'Kittens', 'Doge', 'Ape']
     compare.get_value(words).sort_values('est_value', ascending=False)
     # compare.get_similar_value(words, limit=10)
 

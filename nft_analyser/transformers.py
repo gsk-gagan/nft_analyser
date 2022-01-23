@@ -7,13 +7,16 @@ import nltk
 
 
 class SelectColumns(BaseEstimator, TransformerMixin):
-    def __init__(self, columns: Union[Sequence[str], str]=()):
+    def __init__(self, columns: Union[Sequence[str], str]=(), index: Optional[Union[Sequence[str], str]]=None):
         self.columns = [columns] if isinstance(columns, str) else columns
+        self.index = index
         
     def fit(self, X: pd.DataFrame, y: Optional[pd.DataFrame]=None):
         return self
     
     def transform(self, X: pd.DataFrame) -> pd.DataFrame:
+        if self.index in X.columns:
+            X = X.set_index(self.index)
         return X[self.columns]
 
 
@@ -25,11 +28,17 @@ class CamelCaseFirstCapital(BaseEstimator, TransformerMixin):
     def _just_first_capital(inp: str) -> str:
         if len(inp) <= 1:
             return inp
+        if len(inp) == 2:
+            return f'{inp[0]}{inp[1].lower()}'
         res = [inp[0]]
         last_capital = inp[0].isupper()
-        for c in inp[1:]:
-            res.append(c.lower() if last_capital else c)
+        next_capital = inp[2].isupper()
+        for i in range(1, len(inp)-1):
+            c = inp[i]
+            next_capital = inp[i+1].isupper()
+            res.append(c.lower() if (last_capital and next_capital) else c)
             last_capital = c.isupper()
+        res.append(inp[-1].lower() if last_capital else inp[-1])
         return ''.join(res)
             
     def transform(self, X: pd.DataFrame) -> pd.DataFrame:
