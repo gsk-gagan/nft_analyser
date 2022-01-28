@@ -33,8 +33,9 @@ Getting Started
 ---------------
 Up and Running
 ^^^^^^^^^^^^^^
-* Simply launch ``main_simple_data.ipynb``.
-* Trimmed down version of the data is included in the repo to show code's working.
+* Simply launch ``notebooks/main.ipynb``.
+* Note that the notebook depends on heavy datasets not included with the repo. 
+    * Use the links in the notebook to get them and specify the right paths.
 
 Full Running
 ^^^^^^^^^^^^
@@ -51,7 +52,8 @@ Model Details
 
 Introduction
 ^^^^^^^^^^^^
-The key idea of this project/package is to find new & popular NFT names. To do this we semantically analyze existing NFT names and transaction data. This allows us to assign a value to any word. Using this value we can compare a bunch of possible NFT names or find the one which semantically similar name will have a higher popularity in the NFT market. Because we are trying to find new names, we're interested in the out-of-sample performance of the model. Alternatively, we could easily be interested in finding the most popular NFT names/words, for which our focus will change to having the best in-sample performance. For the sake of being creative and finding new and interesting names, for this project we choose the former.
+There are two key ideas of this project/package. The first one is to assess the favorablity of the NFT market for a new player from trading or creating sides. We do simple statistical analysis along with creating boxplots to get started with it.
+The second key idea is to find new & popular NFT names. To do this we semantically analyze existing NFT names and transaction data. This allows us to assign a value to any word. Using this value we can compare a bunch of possible NFT names or find the one which semantically similar name will have a higher popularity in the NFT market. Because we are trying to find new names, we're interested in the out-of-sample performance of the model. Alternatively, we could easily be interested in finding the most popular NFT names/words, for which our focus will change to having the best in-sample performance. For the sake of being creative and finding new and interesting names, for this project we choose the former.
 
 Most of the code relevant to the model lies inside ``nft_analyser/nft_analyzer/main.py``. The essential parts of the model are built as pipelines, so anyone can easily visualize the model. We've also added model pipelines for your reference here.
 
@@ -98,6 +100,42 @@ Identifying New NFT Names
 * For the first part, we start by vectorizing new NFT names and estimate their value based on our trained deep neural network.
 * For the second part, we again start by vectorizing new NFT names, then compute their semantic similarity by using the GLOVE dataset. This similarity was done by calculating the Euclidean distance (or the cosine distance). Then we simply rank the top n names based on their estimated market value which was again computed using the trained deep neural network.
 
+
+Findings Summary
+^^^^^^^^^^^^^^^^
+* The NFT market is favorable for new comers, as a vast majority of NFTs are priced reasonably and most NFT players still hold a reasonbale number of NFTs.
+* The semantic model helps in identifying popular names which for the trading side can aid with making decision on which NFTs to choose and for the seller to use a semantically similar name for their works of art.
+Do visit: https://medium.com/@gagandeep.singh.iitdelhi/semantic-strategy-for-entry-into-the-nft-marketplace-300b6c13fa4d for a short article on the project.
+
+
+Package Details
+---------------
+
+Libraries Used
+^^^^^^^^^^^^^^
+
+Apart from the standard ones used to configure the project, the following are some noteworthy packages used:
+* pandas==1.3.5 - Essential library for data analysis
+* numpy==1.19.2 - Essential library for efficient numerical computation
+* keras==2.3.1 - For the Neural Network Model
+* tensorflow==2.0.0 - Backend of the Neural Network used by Keras
+* nltk==3.6.5 - For Natuaral Language processing. Used while creating semantic features
+* sklearn==1.0.2 - Essential library. Also used for creating transformers for model pipelines
+* scipy==1.6.2 - Essential library. Used during RandomizedSearchCV.
+* matplotlib==3.5.1 - Essential plotting library
+
+Noteworthy Files in the Package
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+These files exist in nft_analyser/*
+* main.py - Contains the main code to run the entire model. It's basically similar to notebooks/main.ipynb.
+* helper.py - Contains helper functions for the project. Like get the table, specify configuration etc.
+* transformers.py - Contains individual transformers used within the model pipelines.
+
+
+Acknowledgements
+----------------
+* https://www.kaggle.com/simiotic/ethereum-nfts for providing NFT dataset.
+* https://nlp.stanford.edu/projects/glove/ for providing pre-trained GLOVE dataset.
 
 
 Possible Issues
